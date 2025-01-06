@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trending Topics</title>
+</head>
+<body>
+    <h1>Trending Topics Scraper</h1>
+    <button onclick="runScript()">Click here to run the script</button>
+    <div id="results"></div>
+
+    <script>
+        async function runScript() {
+            document.getElementById("results").innerHTML = "Running script...";
+            const response = await fetch("/run-script");
+            const data = await response.json();
+
+            const { trend1, trend2, trend3, trend4, trend5, timestamp, ip_address } = data;
+
+            document.getElementById("results").innerHTML = `
+                <p>These are the most happening topics as on ${timestamp}</p>
+                <ul>
+                    <li>${trend1}</li>
+                    <li>${trend2}</li>
+                    <li>${trend3}</li>
+                    <li>${trend4}</li>
+                </ul>
+                <p>The IP address used for this query was ${ip_address}.</p>
+                <pre>${JSON.stringify(data, null, 2)}</pre>
+                <button onclick="runScript()">Click here to run the query again</button>
+            `;
+        }
+    </script>
+</body>
+</html>
