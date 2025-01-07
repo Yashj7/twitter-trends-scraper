@@ -11,7 +11,7 @@ import requests
 from dotenv import TWITTER_USER,TWITTER_PASS,PROXYMESH_URL,PROXY_USERNAME,PROXY_PASSWORD,MongoUrl
 
 # MongoDB setup
-client = MongoClient("mongodb+srv://yashjadhav7000:i1FZsYFp7lFR3QNn@cluster0.v34xu.mongodb.net/")
+client = MongoClient("MongoUrl")
 db = client.trending_topics
 collection = db.trends
 
